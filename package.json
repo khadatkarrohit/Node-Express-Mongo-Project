@@ -1,0 +1,22 @@
+{
+  "name": "node-express-mongo-project",
+  "version": "1.0.0",
+  "description": "RESTful APIs using Express - Node.js with Mongo database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khadatkarrohit/Node-Express-Mongo-Project.git"
+  },
+  "author": "Rohit Khadatkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khadatkarrohit/Node-Express-Mongo-Project/issues"
+  },
+  "homepage": "https://github.com/khadatkarrohit/Node-Express-Mongo-Project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
