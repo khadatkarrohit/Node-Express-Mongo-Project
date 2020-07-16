@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/khadatkarrohit/Node-Express-Mongo-Project#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.9.24",
+    "nodemon": "^2.0.4"
   }
 }
