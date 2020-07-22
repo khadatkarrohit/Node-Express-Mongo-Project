@@ -2,12 +2,8 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
-const CONNECTION_URL = '';
-const DATABASE_NAME = "project";
-var mongoose = require('mongoose')
 
 var mongodb_url = 'mongodb://127.0.0.1:27017/';
-
 
 const app = express();
 
@@ -21,11 +17,11 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
 
-// server connection and database connection
+// server connection
 app.listen(3000, function () {
   console.log('Server is running on port 3000 !!!');  
 });
@@ -37,6 +33,33 @@ MongoClient.connect(mongodb_url, (err, client) => {
     if (err) return console.error(err)
     console.log('Connected to Database')
     const db = client.db('project')
+
+    // Get all product endpoints
+    app.get("/getAllProduct", (req, res) => {          
+      db.collection('category_master').find({},{product: 1, childproduct: 1, _id: 0}).toArray(function (err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+          console.log(result);
+
+          res.send(JSON.stringify(result));
+        }
+      })
+    });
+
+  // Get selected product endpoints
+  app.get("/getOneProduct", (req, res) => {    
+    var searchProduct = req.body.searchString    
+    db.collection('category_master').find({product : searchProduct},{product: 1, childproduct: 1, _id: 0}).toArray(function (err, result) {
+      if (err) {
+          res.send(err);
+      } else {
+        console.log(result);
+        res.send(JSON.stringify(result));
+      }
+    })
+  });
+
 
     // Add category endpoints
     app.post("/add_category", (req, res) => {
