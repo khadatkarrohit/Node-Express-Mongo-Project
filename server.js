@@ -7,11 +7,7 @@ const DATABASE_NAME = "project";
 var mongoose = require('mongoose')
 
 var mongodb_url = 'mongodb://127.0.0.1:27017/';
-// mongoose.connect(mongodb);
 
-// mongoose.Promise = global.Promise;
-
-// var db = mongoose.connection;
 
 const app = express();
 
@@ -35,13 +31,6 @@ app.listen(3000, function () {
 });
 
 
-// db.on('connected', function(){
-//     console.log("Database connected successfully !!! ")
-// })
-
-// db.on('error', function(err){
-//   console.log("Database connection error: " + err)
-//  }) 
 
 MongoClient.connect(mongodb_url, (err, client) => {
 
