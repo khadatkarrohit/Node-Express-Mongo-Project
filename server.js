@@ -74,8 +74,19 @@ MongoClient.connect(mongodb_url, (err, client) => {
         });
     });
 
+    // Add product endpoints
+    app.post("/update_category", (req, res) => {
+      console.log("In update_category : ", req.body);       
+      db.collection('category_master').findOneAndUpdate({product: req.body.product}, {$set: {product: req.body.updatedProduct}},
+       {new: true}, function(err,doc) {
+        if (err) { throw err; }
+        else {          
+          res.send("data updated !!!");
+       }
+      });
+  });  
 
-  })
+})
 
 
 
